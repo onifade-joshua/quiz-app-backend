@@ -24,7 +24,7 @@ export interface CreateQuestionData {
   option2: string
   option3: string
   option4: string
-  correctAnswer: number | string // Accept string for easier parsing from req.body
+  correctAnswer: number | string 
 }
 
 

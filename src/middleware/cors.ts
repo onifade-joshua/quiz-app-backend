@@ -1,7 +1,7 @@
 import cors from "cors";
 
 export const corsOptions = {
-  origin: "https://quiz-app-assessment.netlify.app", 
+  origin: "https://localhost:5173", // Replace with your frontend URL
   credentials: true,
 };
 
