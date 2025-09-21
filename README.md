@@ -1,124 +1,95 @@
-Quiz App Backend
+# Quiz App Backend
 
-This is the backend for the Quiz Application, built using Node.js, Express, TypeScript, and Prisma. It handles user authentication, question management, quiz sessions, and scoring.
+A backend API for a quiz application built with **Node.js**, **TypeScript**, **Express**, and **Prisma**. This backend handles user authentication, quiz management, question creation, and score tracking.
 
-🚀 Features
+---
 
-User authentication (JWT-based)
+## Features
 
-Create, read, and manage quiz questions
+- User authentication with JWT  
+- Create, read, and manage quiz questions  
+- Start a quiz and submit answers  
+- Automatically calculate scores and percentages  
+- Tracks quiz results per user  
+- TypeScript for type safety  
+- Prisma ORM with SQLite/PostgreSQL for database operations  
 
-Start a quiz and submit answers
+---
 
-Track quiz scores per user
+## Tech Stack
 
-Type-safe backend with TypeScript
+**Node.js** | **TypeScript** | **Express.js** | **Prisma** | **SQLite/PostgreSQL** | **jsonwebtoken**  
 
-Database interactions via Prisma ORM
+---
 
-📦 Tech Stack
+## Installation
 
-Node.js – JavaScript runtime
-
-Express – Web framework
-
-TypeScript – Static typing for safer code
-
-Prisma – ORM for database queries
-
-SQLite / PostgreSQL – Database (adjustable)
-
-jsonwebtoken – JWT authentication
-
-bcryptjs – Password hashing
-
-⚙️ Installation
-
-Clone the repo
-
-git clone https://github.com/onifade-joshua/quiz-app-backend.git
+1. Clone the repository:  
+```bash
+git clone https://github.com/your-username/quiz-app-backend.git
 cd quiz-app-backend
-
-
-Install dependencies
 
 npm install
 
-
-Configure environment variables
-
-Create a .env file in the root:
-
-DATABASE_URL="your_database_connection_string"
-JWT_SECRET="your_super_secret_key"
+Create a .env file in the root directory:
+DATABASE_URL="your-database-connection-string"
+JWT_SECRET="your-secret-key"
 PORT=5000
 
-
-Run database migrations
-
+Run database migrations (if using Prisma):
 npx prisma migrate dev --name init
 
+(Optional) Seed your database:
+npx prisma db seed
 
-Start the server (dev mode)
-
-npm run dev
-
-
-Build the project
-
-npm run build
-
-
-Run the compiled project
-
-node dist/index.js
-
-📝 API Endpoints
+Scripts
+Command	Description
+npm run dev	Start server in development mode (nodemon)
+npm run build	Compile TypeScript into JavaScript
+npm start	Run compiled server from dist/
+npm test	Run tests (if applicable)
+API Endpoints
 Auth
 
-POST /auth/register – Register a new user
+POST /auth/login - Login a user
 
-POST /auth/login – Login and get JWT token
+POST /auth/register - Register a new user
 
 Questions
 
-POST /questions – Create a question (Protected)
+POST /questions - Create a new question (protected)
 
-GET /questions – Get all questions
+GET /questions - Get all questions
 
 Quiz
 
-GET /quiz/start – Get all questions for a quiz
+GET /quiz/start - Start a new quiz
 
-POST /quiz/submit – Submit answers and get score
+POST /quiz/submit - Submit quiz answers and get results
 
-🛡 Middleware
+Note: Protected routes require a valid JWT token in the Authorization header.
 
-verifyUser – Protects routes, verifies JWT, attaches user info to request
-
-💡 Notes
-
-This backend is TypeScript-based. Make sure to build the project (npm run build) before deploying.
-
-Prisma ORM is used for database management; change DATABASE_URL for different databases.
-
-JWT authentication is required for quiz and question routes.
-
-📂 Project Structure
+Project Structure
 quiz-app-backend/
 ├─ src/
-│  ├─ controllers/   # API controllers
-│  ├─ middleware/    # Authentication & validation middleware
-│  ├─ routes/        # Express routes
-│  ├─ utils/         # Helpers & DB connection (Prisma)
-│  └─ index.ts       # App entry point
-├─ prisma/
-│  ├─ schema.prisma  # Prisma schema
-│  └─ seed.ts        # Initial seed data
-├─ tsconfig.json     # TypeScript config
+│  ├─ controllers/       # Route handlers
+│  ├─ middleware/        # JWT verification & error handling
+│  ├─ routes/            # Express routes
+│  ├─ utils/             # Prisma client & helpers
+│  └─ index.ts           # Entry point
+├─ prisma/               # Prisma schema & seeds
+├─ dist/                 # Compiled JS files (after build)
+├─ tsconfig.json
 ├─ package.json
-└─ .env.example      # Example env file
+└─ .env                  # Environment variables
 
-📬 Contact
+Start development server:
+npm run dev
 
-Created by [Your Name] – feel free to reach out at onifadejoshua15.com
+Build for production:
+npm run build
+npm start
+
+Author
+
+Onifade Joshua
